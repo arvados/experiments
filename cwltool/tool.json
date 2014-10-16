@@ -1,0 +1,45 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "description": "Common tool description schema",
+    "type": "object",
+    "properties": {
+        "documentAuthor": { "type": "string" },
+        "softwareDescription": { "type": "object" },
+        "softwareRelease": { "type": "object" },
+        "inputs": { "$ref": "file:metaschema.json" },
+        "outputs": { "$ref": "file:metaschema.json" },
+        "requirements": {
+            "type": "object",
+            "properties": {
+                "platformFeatures": { "$ref": "http://json-schema.org/draft-04/schema#definitions/stringArray" },
+                "environment": {
+                    "type": "object",
+                    "properties": {
+                        "container": {
+                            "type": "object",
+                            "properties": {
+                                "imageId": { "type": "string" },
+                                "type": { "type": "string" },
+                                "uri": { "type": "string" }
+                            }
+                        }
+                    }
+                },
+                "resources": {
+                    "type": "object",
+                    "properties": {
+                        "cpu": { "type": "number" },
+                        "diskSpace": { "type": "number" },
+                        "mem": { "type": "number" },
+                        "network": { "type": "boolean" }
+                    }
+                }
+            }
+        },
+        "command": {
+            "type": "array",
+            "items": { "type": "string" },
+            "minItems": 1
+        }
+    }
+}
